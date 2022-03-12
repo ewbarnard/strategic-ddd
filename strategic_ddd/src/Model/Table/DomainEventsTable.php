@@ -11,8 +11,6 @@ use Cake\Validation\Validator;
 /**
  * DomainEvents Model
  *
- * @property \Cake\ORM\Table&\Cake\ORM\Association\BelongsTo $Sources
- *
  * @method \App\Model\Entity\DomainEvent newEmptyEntity()
  * @method \App\Model\Entity\DomainEvent newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\DomainEvent[] newEntities(array $data, array $options = [])
@@ -46,11 +44,6 @@ class DomainEventsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
-
-        $this->belongsTo('Sources', [
-            'foreignKey' => 'source_id',
-            'joinType' => 'INNER',
-        ]);
     }
 
     /**
@@ -63,6 +56,10 @@ class DomainEventsTable extends Table
     {
         $validator
             ->allowEmptyString('id', null, 'create');
+
+        $validator
+            ->requirePresence('id_of_source', 'create')
+            ->notEmptyString('id_of_source');
 
         $validator
             ->scalar('source_table')
@@ -112,7 +109,7 @@ class DomainEventsTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->isUnique(['event_uuid']), ['errorField' => 'event_uuid']);
-        $rules->add($rules->existsIn('source_id', 'Sources'), ['errorField' => 'source_id']);
+        $rules->add($rules->isUnique(['id_of_source', 'source_table']), ['errorField' => 'id_of_source']);
 
         return $rules;
     }

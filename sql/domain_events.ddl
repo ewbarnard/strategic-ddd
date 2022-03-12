@@ -1,7 +1,7 @@
 CREATE TABLE `domain_events`
 (
     `id`            bigint unsigned NOT NULL AUTO_INCREMENT,
-    `source_id`     bigint unsigned NOT NULL,
+    `id_of_source`  bigint unsigned NOT NULL,
     `source_table`  varchar(255)    NOT NULL,
     `action`        varchar(255)    NOT NULL DEFAULT '',
     `subsystem`     varchar(255)    NOT NULL DEFAULT '',
@@ -13,7 +13,7 @@ CREATE TABLE `domain_events`
     `modified`      datetime        NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE KEY `event_uuid` (`event_uuid`),
-    UNIQUE KEY `source_id` (`source_id`, `source_table`)
+    UNIQUE KEY `source_id` (`id_of_source`, `source_table`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_0900_ai_ci;

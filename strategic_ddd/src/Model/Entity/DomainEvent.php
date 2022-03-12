@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * DomainEvent Entity
  *
  * @property int $id
- * @property int $source_id
+ * @property int $id_of_source
  * @property string $source_table
  * @property string $action
  * @property string $subsystem
@@ -19,8 +19,6 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $when_occurred
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
- *
- * @property \Cake\ORM\Entity $source
  */
 class DomainEvent extends Entity
 {
@@ -34,7 +32,7 @@ class DomainEvent extends Entity
      * @var array
      */
     protected $_accessible = [
-        'source_id' => true,
+        'id_of_source' => true,
         'source_table' => true,
         'action' => true,
         'subsystem' => true,
@@ -44,11 +42,10 @@ class DomainEvent extends Entity
         'when_occurred' => true,
         'created' => true,
         'modified' => true,
-        'source' => true,
     ];
 
 	public const FIELD_ID = 'id';
-	public const FIELD_SOURCE_ID = 'source_id';
+	public const FIELD_ID_OF_SOURCE = 'id_of_source';
 	public const FIELD_SOURCE_TABLE = 'source_table';
 	public const FIELD_ACTION = 'action';
 	public const FIELD_SUBSYSTEM = 'subsystem';
@@ -58,5 +55,4 @@ class DomainEvent extends Entity
 	public const FIELD_WHEN_OCCURRED = 'when_occurred';
 	public const FIELD_CREATED = 'created';
 	public const FIELD_MODIFIED = 'modified';
-	public const FIELD_SOURCE = 'source';
 }
