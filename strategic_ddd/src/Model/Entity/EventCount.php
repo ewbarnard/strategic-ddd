@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * EventCount Entity
  *
  * @property int $id
- * @property \Cake\I18n\FrozenTime $when
+ * @property \Cake\I18n\FrozenTime $when_counted
  * @property int $event_count
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -26,14 +26,14 @@ class EventCount extends Entity
      * @var array
      */
     protected $_accessible = [
-        'when' => true,
+        'when_counted' => true,
         'event_count' => true,
         'created' => true,
         'modified' => true,
     ];
 
 	public const FIELD_ID = 'id';
-	public const FIELD_WHEN = 'when';
+	public const FIELD_WHEN_COUNTED = 'when_counted';
 	public const FIELD_EVENT_COUNT = 'event_count';
 	public const FIELD_CREATED = 'created';
 	public const FIELD_MODIFIED = 'modified';

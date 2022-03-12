@@ -59,9 +59,9 @@ class EventCountsTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
-            ->dateTime('when')
-            ->requirePresence('when', 'create')
-            ->notEmptyDateTime('when');
+            ->dateTime('when_counted')
+            ->requirePresence('when_counted', 'create')
+            ->notEmptyDateTime('when_counted');
 
         $validator
             ->notEmptyString('event_count');
@@ -78,7 +78,7 @@ class EventCountsTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->isUnique(['when']), ['errorField' => 'when']);
+        $rules->add($rules->isUnique(['when_counted']), ['errorField' => 'when_counted']);
 
         return $rules;
     }

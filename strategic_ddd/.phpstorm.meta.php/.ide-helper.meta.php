@@ -740,7 +740,7 @@ namespace PHPSTORM_META {
 		'source_id',
 		'source_table',
 		'subsystem',
-		'when',
+		'when_counted',
 		'when_occurred'
 	);
 
@@ -1003,7 +1003,7 @@ namespace PHPSTORM_META {
 		'source_id',
 		'source_table',
 		'subsystem',
-		'when',
+		'when_counted',
 		'when_occurred'
 	);
 
@@ -1107,7 +1107,7 @@ namespace PHPSTORM_META {
 		'event_count',
 		'id',
 		'modified',
-		'when'
+		'when_counted'
 	);
 
 	registerArgumentsSet(
