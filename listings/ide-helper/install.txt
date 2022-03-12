@@ -1,0 +1,6 @@
+# Documentation: https://github.com/dereuromark/cakephp-ide-helper
+
+# Installation: https://github.com/dereuromark/cakephp-ide-helper/tree/master/docs
+
+composer require --dev dereuromark/cakephp-ide-helper
+bin/cake plugin load IdeHelper
