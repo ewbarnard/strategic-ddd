@@ -123,6 +123,66 @@ namespace PHPSTORM_META {
 	);
 
 	expectedArguments(
+		\App\Model\Entity\ExceptionReport::get(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\ExceptionReport')
+	);
+
+	expectedArguments(
+		\App\Model\Entity\ExceptionReport::getError(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\ExceptionReport')
+	);
+
+	expectedArguments(
+		\App\Model\Entity\ExceptionReport::getInvalidField(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\ExceptionReport')
+	);
+
+	expectedArguments(
+		\App\Model\Entity\ExceptionReport::getOriginal(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\ExceptionReport')
+	);
+
+	expectedArguments(
+		\App\Model\Entity\ExceptionReport::has(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\ExceptionReport')
+	);
+
+	expectedArguments(
+		\App\Model\Entity\ExceptionReport::hasValue(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\ExceptionReport')
+	);
+
+	expectedArguments(
+		\App\Model\Entity\ExceptionReport::isDirty(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\ExceptionReport')
+	);
+
+	expectedArguments(
+		\App\Model\Entity\ExceptionReport::isEmpty(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\ExceptionReport')
+	);
+
+	expectedArguments(
+		\App\Model\Entity\ExceptionReport::setDirty(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\ExceptionReport')
+	);
+
+	expectedArguments(
+		\App\Model\Entity\ExceptionReport::setError(),
+		0,
+		argumentsSet('entityFields:App\Model\Entity\ExceptionReport')
+	);
+
+	expectedArguments(
 		\App\Model\Entity\LocalAppEvent::get(),
 		0,
 		argumentsSet('entityFields:App\Model\Entity\LocalAppEvent')
@@ -393,6 +453,7 @@ namespace PHPSTORM_META {
 			'DebugKit.Requests' => \DebugKit\Model\Table\RequestsTable::class,
 			'DomainEvents' => \App\Model\Table\DomainEventsTable::class,
 			'EventCounts' => \App\Model\Table\EventCountsTable::class,
+			'ExceptionReports' => \App\Model\Table\ExceptionReportsTable::class,
 			'LocalAppEvents' => \App\Model\Table\LocalAppEventsTable::class,
 		])
 	);
@@ -436,6 +497,7 @@ namespace PHPSTORM_META {
 			'DebugKit.Requests' => \DebugKit\Model\Table\RequestsTable::class,
 			'DomainEvents' => \App\Model\Table\DomainEventsTable::class,
 			'EventCounts' => \App\Model\Table\EventCountsTable::class,
+			'ExceptionReports' => \App\Model\Table\ExceptionReportsTable::class,
 			'LocalAppEvents' => \App\Model\Table\LocalAppEventsTable::class,
 		])
 	);
@@ -447,6 +509,7 @@ namespace PHPSTORM_META {
 			'DebugKit.Requests' => \DebugKit\Model\Table\RequestsTable::class,
 			'DomainEvents' => \App\Model\Table\DomainEventsTable::class,
 			'EventCounts' => \App\Model\Table\EventCountsTable::class,
+			'ExceptionReports' => \App\Model\Table\ExceptionReportsTable::class,
 			'LocalAppEvents' => \App\Model\Table\LocalAppEventsTable::class,
 		])
 	);
@@ -468,6 +531,7 @@ namespace PHPSTORM_META {
 			'DebugKit.Requests' => \Cake\ORM\Association\BelongsToMany::class,
 			'DomainEvents' => \Cake\ORM\Association\BelongsToMany::class,
 			'EventCounts' => \Cake\ORM\Association\BelongsToMany::class,
+			'ExceptionReports' => \Cake\ORM\Association\BelongsToMany::class,
 			'LocalAppEvents' => \Cake\ORM\Association\BelongsToMany::class,
 		])
 	);
@@ -479,6 +543,7 @@ namespace PHPSTORM_META {
 			'DebugKit.Requests' => \Cake\ORM\Association\BelongsTo::class,
 			'DomainEvents' => \Cake\ORM\Association\BelongsTo::class,
 			'EventCounts' => \Cake\ORM\Association\BelongsTo::class,
+			'ExceptionReports' => \Cake\ORM\Association\BelongsTo::class,
 			'LocalAppEvents' => \Cake\ORM\Association\BelongsTo::class,
 		])
 	);
@@ -500,6 +565,7 @@ namespace PHPSTORM_META {
 			'DebugKit.Requests' => \Cake\ORM\Association\HasMany::class,
 			'DomainEvents' => \Cake\ORM\Association\HasMany::class,
 			'EventCounts' => \Cake\ORM\Association\HasMany::class,
+			'ExceptionReports' => \Cake\ORM\Association\HasMany::class,
 			'LocalAppEvents' => \Cake\ORM\Association\HasMany::class,
 		])
 	);
@@ -511,6 +577,7 @@ namespace PHPSTORM_META {
 			'DebugKit.Requests' => \Cake\ORM\Association\HasOne::class,
 			'DomainEvents' => \Cake\ORM\Association\HasOne::class,
 			'EventCounts' => \Cake\ORM\Association\HasOne::class,
+			'ExceptionReports' => \Cake\ORM\Association\HasOne::class,
 			'LocalAppEvents' => \Cake\ORM\Association\HasOne::class,
 		])
 	);
@@ -532,6 +599,7 @@ namespace PHPSTORM_META {
 			'DebugKit.Requests' => \DebugKit\Model\Table\RequestsTable::class,
 			'DomainEvents' => \App\Model\Table\DomainEventsTable::class,
 			'EventCounts' => \App\Model\Table\EventCountsTable::class,
+			'ExceptionReports' => \App\Model\Table\ExceptionReportsTable::class,
 			'LocalAppEvents' => \App\Model\Table\LocalAppEventsTable::class,
 		])
 	);
@@ -1110,6 +1178,15 @@ namespace PHPSTORM_META {
 	);
 
 	registerArgumentsSet(
+		'entityFields:App\Model\Entity\ExceptionReport',
+		'created',
+		'description',
+		'detail',
+		'id',
+		'modified'
+	);
+
+	registerArgumentsSet(
 		'entityFields:App\Model\Entity\LocalAppEvent',
 		'action',
 		'created',
@@ -1142,6 +1219,7 @@ namespace PHPSTORM_META {
 		'tableNames',
 		'domain_events',
 		'event_counts',
+		'exception_reports',
 		'local_app_events'
 	);
 
