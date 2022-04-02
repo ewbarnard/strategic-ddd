@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\BoundedContexts\Infrastructure\Events\AppEvent\ApplicationServices;
+namespace LegacyBoundedContexts\Infrastructure\Events\AppEvent\ApplicationServices;
 
-use App\BoundedContexts\Infrastructure\Events\AppEvent\DomainModel\Constants\CAppEventOriginatingContexts;
-use App\BoundedContexts\Infrastructure\Events\AppEvent\DomainModel\Interfaces\IAppEvent;
-use App\BoundedContexts\Infrastructure\Events\AppEvent\DomainModel\Interfaces\IRAppEvent;
-use App\BoundedContexts\Infrastructure\Events\DomainEvent\Factory\DomainEventFactory;
-use Cake\Database\Connection;
 use InvalidArgumentException;
+use LegacyBoundedContexts\Infrastructure\Events\AppEvent\DomainModel\Constants\CAppEventOriginatingContexts;
+use LegacyBoundedContexts\Infrastructure\Events\AppEvent\DomainModel\Interfaces\IAppEvent;
+use LegacyBoundedContexts\Infrastructure\Events\AppEvent\DomainModel\Interfaces\IRAppEvent;
+
+use LegacyBoundedContexts\Infrastructure\Events\DomainEvent\Factory\DomainEventFactory;
 use Ramsey\Uuid\Uuid;
 
 use function array_merge;
@@ -21,18 +21,28 @@ use const JSON_THROW_ON_ERROR;
 
 abstract class BaseAppEvent implements CAppEventOriginatingContexts, IAppEvent
 {
-    protected static string $subsystem = self::SUBSYSTEM_DEFAULT;
-    protected static string $sourceTable = self::SOURCE_TABLE_PRIMARY;
-    protected static string $insert = '';
-    protected static string $read = '';
+    /** @var string */
+    protected static $subsystem = self::SUBSYSTEM_DEFAULT;
+    /** @var string */
+    protected static $sourceTable = self::SOURCE_TABLE_PRIMARY;
+    /** @var string */
+    protected static $insert = '';
+    /** @var string */
+    protected static $read = '';
 
-    protected IRAppEvent $repository;
+    /** @var \LegacyBoundedContexts\Infrastructure\Events\AppEvent\DomainModel\Interfaces\IRAppEvent */
+    protected $repository;
 
-    private string $action;
-    private string $description;
-    private ?string $detail;
-    private string $uuid;
-    private array $readback;
+    /** @var string */
+    private $action;
+    /** @var string */
+    private $description;
+    /** @var ?string */
+    private $detail;
+    /** @var string */
+    private $uuid;
+    /** @var array */
+    private $readback;
 
     /**
      * @throws \JsonException
@@ -46,8 +56,7 @@ abstract class BaseAppEvent implements CAppEventOriginatingContexts, IAppEvent
         $this->repository = $repository;
         $this->action = $action;
         $this->description = $description;
-        $this->detail = is_array($detail) ?
-            json_encode($detail, JSON_THROW_ON_ERROR) : null;
+        $this->detail = is_array($detail) ? json_encode($detail, JSON_THROW_ON_ERROR) : null;
         $this->uuid = Uuid::uuid4()->toString();
 
         $this->validateSubclass();
@@ -77,7 +86,7 @@ abstract class BaseAppEvent implements CAppEventOriginatingContexts, IAppEvent
         $this->detail = json_encode($new, JSON_THROW_ON_ERROR);
     }
 
-    public function save(Connection $conn): void
+    public function save(): void
     {
         $parms = [
             $this->action,
@@ -86,8 +95,7 @@ abstract class BaseAppEvent implements CAppEventOriginatingContexts, IAppEvent
             $this->detail,
             $this->uuid,
         ];
-        $this->readback = $this->repository
-            ->save(static::$insert, static::$read, $parms, $conn);
+        $this->readback = $this->repository->save(static::$insert, static::$read, $parms);
     }
 
     public function notify(): void
@@ -96,9 +104,6 @@ abstract class BaseAppEvent implements CAppEventOriginatingContexts, IAppEvent
             return;
         }
         $domainEvent = DomainEventFactory::domainEvent();
-        $domainEvent->notifyDomainEvent(
-            static::$sourceTable,
-            $this->readback
-        );
+        $domainEvent->notifyDomainEvent(static::$sourceTable, $this->readback);
     }
 }

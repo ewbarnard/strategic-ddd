@@ -1,0 +1,10 @@
+/Applications/MAMP/bin/php/php7.3.29/bin/php test/exercise_count_events.php
+Query failed: An exception occurred while executing 'insert into event_counts
+    (when_counted, event_count, created, modified)
+VALUES (now(), ?, now(), now())' with params [1]:
+
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2022-03-29 09:12:23' for key 'event_counts.when'
+insert into event_counts
+    (when_counted, event_count, created, modified)
+VALUES (now(), ?, now(), now())
+Count complete

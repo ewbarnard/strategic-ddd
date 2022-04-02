@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\BoundedContexts\Infrastructure\Events\AppEvent\DomainModel\Interfaces;
-
-use Cake\Database\Connection;
+namespace LegacyBoundedContexts\Infrastructure\Events\AppEvent\DomainModel\Interfaces;
 
 interface IAppEvent
 {
@@ -17,7 +15,7 @@ interface IAppEvent
 
     public function addDetail(array $detail): void;
 
-    public function save(Connection $conn): void;
+    public function save(): void;
 
     public function notify(): void;
 }

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\BoundedContexts\Infrastructure\Events\AppEvent\DomainModel\Interfaces;
+namespace LegacyBoundedContexts\Infrastructure\Events\AppEvent\DomainModel\Interfaces;
 
-use Cake\Database\Connection;
+use Doctrine\DBAL\Connection;
 
 interface IRAppEvent
 {
@@ -12,6 +12,6 @@ interface IRAppEvent
         string $insert,
         string $read,
         array $parms,
-        Connection $conn
+        Connection $connection
     ): array;
 }

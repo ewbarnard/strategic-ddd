@@ -1,0 +1,12 @@
+PHPUnit 7.5.20 by Sebastian Bergmann and contributors.
+
+Failed asserting that two strings are identical.
+Expected :'test input string'
+Actual   :''
+<Click to see difference>
+
+Time: 193 ms, Memory: 12.00 MB
+
+FAILURES!
+Tests: 17, Assertions: 27, Failures: 1.
+Process finished with exit code 1
